@@ -7,11 +7,17 @@ import java.util.Map;
 // Prices are in pence (int) to avoid floating-point rounding errors.
 public class Menu {
 
+    private final Map<String,Integer> menuPrices;
+
+
     public Menu(Map<String, Integer> pricesInPence) {
+        this.menuPrices=pricesInPence;
     }
+
 
     public int priceOf(String dish) {
         return 0;
     }
+
 }
 
