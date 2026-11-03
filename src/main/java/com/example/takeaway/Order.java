@@ -1,9 +1,8 @@
 package com.example.takeaway;
 
-import java.util.Map;
-
 public class Order {
     private final Menu menu;
+    private final Map<String, integer>
 
     public Order(Menu menu){
         this.menu=menu;
@@ -11,11 +10,13 @@ public class Order {
 
     }
 
-    public void Add (String dish, int quantity){
+    public void add(String dish, int quantity){
+
 
     }
 
     public int total(){
+
         return 0;
     }
 }
