@@ -12,9 +12,6 @@ public class Menu {
         this.menuPrices = Map.copyOf( pricesInPence);
     }
 
-
-
-
     public int priceOf(String dish) {
         if (!this.menuPrices.containsKey(dish)){
             throw new IllegalArgumentException("The "+dish +" is not on the menu");
@@ -22,8 +19,10 @@ public class Menu {
         return this.menuPrices.get(dish);
     }
 
-    public int dishes(){
-        return 0;
+    public Map<String, Integer>  dishes(){
+
+        return this.menuPrices;
+
     }
 
 }
