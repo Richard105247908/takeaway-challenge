@@ -28,6 +28,5 @@ class MenuTest {
     }
     @Test
     void menuListsItsDishesWithPrices(){
-        
-    }
+        Menu menu = new Menu(Map.of("Pizza", 850, "Cod", 450));    }
 }
