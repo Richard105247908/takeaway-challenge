@@ -1,8 +1,13 @@
 package com.example.takeaway;
 
+import java.util.Map;
+
 public class Order {
+    private final Menu menu;
 
     public Order(Menu menu){
+        this.menu=menu;
+
 
     }
 
