@@ -27,4 +27,7 @@ class MenuTest {
         assertEquals("The " + dish + " is not on the menu", ex.getMessage());
     }
     @Test
+    void menuListsItsDishesWithPrices(){
+        
+    }
 }
