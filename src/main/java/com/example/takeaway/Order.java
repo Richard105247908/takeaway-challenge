@@ -6,5 +6,11 @@ public class Order {
 
     }
 
-    public void
+    public void Add (String dish, int quantity){
+
+    }
+
+    public int total(){
+        return 0;
+    }
 }
