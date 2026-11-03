@@ -9,8 +9,10 @@ public class Menu {
 
 
     public Menu(Map<String, Integer> pricesInPence) {
-        this.menuPrices = pricesInPence;
+        this.menuPrices = Map.copyOf( pricesInPence);
     }
+
+
 
 
     public int priceOf(String dish) {
@@ -18,8 +20,10 @@ public class Menu {
             throw new IllegalArgumentException("The "+dish +" is not on the menu");
         }
         return this.menuPrices.get(dish);
+    }
 
-
+    public int dishes(){
+        return 0;
     }
 
 }
