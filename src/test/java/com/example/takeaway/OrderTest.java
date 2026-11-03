@@ -20,6 +20,11 @@ public class OrderTest {
         when(menu.priceOf("Pizza")).thenReturn(850);
         when(menu.priceOf("Cod")).thenReturn(450);
 
+        Order order = new Order(menu);
+
+        order.Add("Pizza",2);
+        o
+
 
     }
 
