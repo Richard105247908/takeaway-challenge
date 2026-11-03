@@ -7,6 +7,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,7 +24,9 @@ public class OrderTest {
         Order order = new Order(menu);
 
         order.Add("Pizza",2);
-        o
+        order.Add("Cod",1);
+
+        assertEquals(2150,order.total());
 
 
     }
