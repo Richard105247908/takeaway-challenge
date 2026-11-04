@@ -1,8 +1,12 @@
 package com.example.takeaway;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Order {
     private final Menu menu;
-    private final Map<String, integer>
+    private final Map<String,Integer>items =new HashMap<>();
+
 
     public Order(Menu menu){
         this.menu=menu;
@@ -11,6 +15,7 @@ public class Order {
     }
 
     public void add(String dish, int quantity){
+        
 
 
     }
