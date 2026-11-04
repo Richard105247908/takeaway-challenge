@@ -21,7 +21,10 @@ public class Order {
     }
 
     public int total(){
+        int total = items.entrySet().stream()
+                .mapToInt(e -> menu.priceOf(e.getKey()) * e.getValue())
+                .sum();
 
-        return 0;
+        return total;
     }
 }
