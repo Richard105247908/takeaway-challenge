@@ -34,11 +34,17 @@ class MenuTest {
     }
 
     @Test
-    void menuHasDish(){
+    void hasReturnsTrueWhenDishIsOnTheMenu(){
         Menu menu = new Menu(Map.of("Pizza", 850));
 
-        assertEquals(false,menu.has("Rat"));
+        assertEquals(true,menu.has("Pizza"));
+    }
 
+    @Test
+    void hasReturnsFalseWhenDishIsOnTheMenu(){
+        Menu menu = new Menu(Map.of("Pizza",250));
+
+        assertEquals(false,menu.has("Ghost Pizza"));
 
     }
 }

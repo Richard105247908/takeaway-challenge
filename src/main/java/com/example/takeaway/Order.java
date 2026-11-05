@@ -31,6 +31,6 @@ public class Order {
         return items.entrySet().stream()
                 .mapToInt(e -> menu.priceOf(e.getKey()) * e.getValue())
                 .sum();
-        
+
     }
 }
