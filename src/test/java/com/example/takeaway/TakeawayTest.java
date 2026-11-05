@@ -9,6 +9,7 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
@@ -25,8 +26,12 @@ public class TakeawayTest {
         Clock fixedClock= Clock.fixed(Instant.parse("2026-10-30T17:52:00Z"), ZoneId.of("UTC"));
         Takeaway takeaway=new Takeaway(smsSender, fixedClock);
 
+        int expectedTotal=1000;
+
         var ex=assertThrows(IllegalArgumentException.class,
-                ()-> takeaway.place(order,1000));
+                ()-> takeaway.place(order,expectedTotal));
+
+        assertEquals("Order total "+ order.total() +" does not match the expected total " +expectedTotal, ex.getMessage());
 
         verify(smsSender,never()).send(any());
 
