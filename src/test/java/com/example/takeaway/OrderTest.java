@@ -58,6 +58,9 @@ import static org.mockito.Mockito.when;
     @Test
     void dishNotOnTheMenuCannotBeAdded(){
         Order order=new Order(new Menu(Map.of("Pizza",850)));
+
+        var ex = assertThrows(IllegalArgumentException.class,
+                () -> order.add("Pizza of doom", 1));
     }
 
 
