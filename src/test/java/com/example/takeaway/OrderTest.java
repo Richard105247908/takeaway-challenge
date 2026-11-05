@@ -58,7 +58,7 @@ import static org.mockito.Mockito.when;
 
     @Test
     void dishNotOnTheMenuCannotBeAdded(){
-        when(menu.has("Pizza")).thenReturn(true);
+
         Order order=new Order(menu);
 
         String dish ="Pizza of Doom";
