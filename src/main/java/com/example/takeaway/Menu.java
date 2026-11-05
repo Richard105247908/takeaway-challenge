@@ -24,7 +24,7 @@ public class Menu {
         return this.menuPrices;
     }
 
-    public Boolean has(String dish) {
+    public boolean has(String dish) {
         return menuPrices.containsKey(dish);
     }
 

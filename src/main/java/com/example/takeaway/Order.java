@@ -18,6 +18,9 @@ public class Order {
         if(quantity<=0){
             throw new IllegalArgumentException("Quantity must be at least 1, but was "+quantity);
         }
+        if (!menu.has(dish)) {
+            throw new IllegalArgumentException("The " +dish +" is not on the menu");
+        }
         items.merge(dish,quantity,Integer::sum);
         //items.put(dish,quantity);  using put replaces instead of add to dish.
 

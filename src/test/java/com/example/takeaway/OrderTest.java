@@ -57,12 +57,15 @@ import static org.mockito.Mockito.when;
 
     @Test
     void dishNotOnTheMenuCannotBeAdded(){
-        Order order=new Order(new Menu(Map.of("Pizza",850)));
+        when(menu.has("Pizza")).thenReturn(true);
+        Order order=new Order(menu);
+
+        String dish ="Pizza of Doom";
 
         var ex = assertThrows(IllegalArgumentException.class,
-                () -> order.add("Pizza of doom", 1));
+                () -> order.add(dish, 1));
 
-        assertEquals("The Pizza of doom is not on the menu", ex.getMessage());
+        assertEquals("The "+dish +" is not on the menu", ex.getMessage());
     }
 
 
