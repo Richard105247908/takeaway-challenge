@@ -16,24 +16,26 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class TakeawayTest {
 
-    @Mock Order order;
-    @Mock SmsSender smsSender;
+    @Mock
+    Order order;
+    @Mock
+    SmsSender smsSender;
 
     @Test
     void testPlaceOrderWithMismatchingTotalThrowsException() {
         when(order.total()).thenReturn(2150);
 
-        Clock fixedClock= Clock.fixed(Instant.parse("2026-10-30T17:52:00Z"), ZoneId.of("UTC"));
-        Takeaway takeaway=new Takeaway(smsSender, fixedClock);
+        Clock fixedClock = Clock.fixed(Instant.parse("2026-10-30T17:52:00Z"), ZoneId.of("UTC"));
+        Takeaway takeaway = new Takeaway(smsSender, fixedClock);
 
-        int expectedTotal=1000;
+        int expectedTotal = 1000;
 
-        var ex=assertThrows(IllegalArgumentException.class,
-                ()-> takeaway.place(order,expectedTotal));
+        var ex = assertThrows(IllegalArgumentException.class,
+                () -> takeaway.place(order, expectedTotal));
 
-        assertEquals("Order total "+ order.total() +" does not match the expected total " +expectedTotal, ex.getMessage());
+        assertEquals("Order total " + order.total() + " does not match the expected total " + expectedTotal, ex.getMessage());
 
-        verify(smsSender,never()).send(any());
+        verify(smsSender, never()).send(any());
 
     }
 }

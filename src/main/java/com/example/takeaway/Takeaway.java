@@ -11,21 +11,20 @@ public class Takeaway {
         return clock;
     }
 
-    public Takeaway(Menu menu,SmsSender smsSender, Clock clock) {
-        this.menu=menu;
-        this.smsSender=smsSender;
-        this.clock=clock;
-    }
-    public Takeaway( SmsSender smsSender, Clock clock) {
-        this (null,smsSender,clock);
+    public Takeaway(Menu menu, SmsSender smsSender, Clock clock) {
+        this.menu = menu;
+        this.smsSender = smsSender;
+        this.clock = clock;
     }
 
-
+    public Takeaway(SmsSender smsSender, Clock clock) {
+        this(null, smsSender, clock);
+    }
 
     public void place(Order order, int expectedTotal) {
 
-        if (order.total()!= expectedTotal) {
-            throw new IllegalArgumentException("Order total "+ order.total() +" does not match the expected total " +expectedTotal);
+        if (order.total() != expectedTotal) {
+            throw new IllegalArgumentException("Order total " + order.total() + " does not match the expected total " + expectedTotal);
         }
 
     }
