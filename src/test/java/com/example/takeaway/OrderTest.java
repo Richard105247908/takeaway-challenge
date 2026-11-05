@@ -18,7 +18,8 @@ import static org.mockito.Mockito.when;
      //test 5
     @Test
     void totalIsTheSumOfDishPricesTimesQuantities(){
-
+        when(menu.has("Pizza")).thenReturn(true);
+        when(menu.has("Cod")).thenReturn(true);
         when(menu.priceOf("Pizza")).thenReturn(850);
         when(menu.priceOf("Cod")).thenReturn(450);
 
