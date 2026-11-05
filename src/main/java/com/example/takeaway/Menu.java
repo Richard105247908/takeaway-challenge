@@ -9,17 +9,17 @@ public class Menu {
 
 
     public Menu(Map<String, Integer> pricesInPence) {
-        this.menuPrices = Map.copyOf( pricesInPence);
+        this.menuPrices = Map.copyOf(pricesInPence);
     }
 
     public int priceOf(String dish) {
-        if (!this.menuPrices.containsKey(dish)){
-            throw new IllegalArgumentException("The "+dish +" is not on the menu");
+        if (!this.menuPrices.containsKey(dish)) {
+            throw new IllegalArgumentException("The " + dish + " is not on the menu");
         }
         return this.menuPrices.get(dish);
     }
 
-    public Map<String, Integer>  dishes(){
+    public Map<String, Integer> dishes() {
 
         return this.menuPrices;
     }
@@ -27,8 +27,6 @@ public class Menu {
     public boolean has(String dish) {
         return menuPrices.containsKey(dish);
     }
-
-
 
 
 }

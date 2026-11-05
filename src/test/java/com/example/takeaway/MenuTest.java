@@ -26,25 +26,26 @@ class MenuTest {
 
         assertEquals("The " + dish + " is not on the menu", ex.getMessage());
     }
+
     @Test
-    void menuListsItsDishesWithPrices(){
+    void menuListsItsDishesWithPrices() {
         Menu menu = new Menu(Map.of("Pizza", 850, "Cod", 450));
 
         assertEquals(Map.of("Pizza", 850, "Cod", 450), menu.dishes());
     }
 
     @Test
-    void hasReturnsTrueWhenDishIsOnTheMenu(){
+    void hasReturnsTrueWhenDishIsOnTheMenu() {
         Menu menu = new Menu(Map.of("Pizza", 850));
 
-        assertEquals(true,menu.has("Pizza"));
+        assertEquals(true, menu.has("Pizza"));
     }
 
     @Test
-    void hasReturnsFalseWhenDishIsOnTheMenu(){
-        Menu menu = new Menu(Map.of("Pizza",250));
+    void hasReturnsFalseWhenDishIsOnTheMenu() {
+        Menu menu = new Menu(Map.of("Pizza", 250));
 
-        assertEquals(false,menu.has("Ghost Pizza"));
+        assertEquals(false, menu.has("Ghost Pizza"));
 
     }
 }

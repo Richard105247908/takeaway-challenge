@@ -12,12 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
- class OrderTest {
+class OrderTest {
 
-    @Mock Menu menu;
-     //test 5
+    @Mock
+    Menu menu;
+
+    //test 5
     @Test
-    void totalIsTheSumOfDishPricesTimesQuantities(){
+    void totalIsTheSumOfDishPricesTimesQuantities() {
         when(menu.has("Pizza")).thenReturn(true);
         when(menu.has("Cod")).thenReturn(true);
         when(menu.priceOf("Pizza")).thenReturn(850);
@@ -25,53 +27,49 @@ import static org.mockito.Mockito.when;
 
         Order order = new Order(menu);
 
-        order.add("Pizza",2);
-        order.add("Cod",1);
+        order.add("Pizza", 2);
+        order.add("Cod", 1);
 
-        assertEquals(2150,order.total());
+        assertEquals(2150, order.total());
     }
 
     //change to parametirisesTest
     @Test
-    void zeroQuantityIsRejected(){
-        Order order=new Order(menu);
-        String dish="Pizza";
-        int quantity=0;
+    void zeroQuantityIsRejected() {
+        Order order = new Order(menu);
+        String dish = "Pizza";
+        int quantity = 0;
 
         var ex = assertThrows(IllegalArgumentException.class,
-                () -> order.add(dish,quantity));
+                () -> order.add(dish, quantity));
 
-        assertEquals("Quantity must be at least 1, but was "+quantity ,ex.getMessage());
+        assertEquals("Quantity must be at least 1, but was " + quantity, ex.getMessage());
     }
 
     @Test
-    void negativeQuantityIsRejected(){
-        Order order=new Order(menu);
-        String dish="Pizza";
-        int quantity2=-1;
+    void negativeQuantityIsRejected() {
+        Order order = new Order(menu);
+        String dish = "Pizza";
+        int quantity2 = -1;
 
         var ex2 = assertThrows(IllegalArgumentException.class,
-                () -> order.add(dish,quantity2));
+                () -> order.add(dish, quantity2));
 
-        assertEquals("Quantity must be at least 1, but was "+quantity2,ex2.getMessage());
+        assertEquals("Quantity must be at least 1, but was " + quantity2, ex2.getMessage());
     }
 
     @Test
-    void dishNotOnTheMenuCannotBeAdded(){
+    void dishNotOnTheMenuCannotBeAdded() {
 
-        Order order=new Order(menu);
+        Order order = new Order(menu);
 
-        String dish ="Pizza of Doom";
+        String dish = "Pizza of Doom";
 
         var ex = assertThrows(IllegalArgumentException.class,
                 () -> order.add(dish, 1));
 
-        assertEquals("The "+dish +" is not on the menu", ex.getMessage());
+        assertEquals("The " + dish + " is not on the menu", ex.getMessage());
     }
-
-
-
-
 
 
 }
