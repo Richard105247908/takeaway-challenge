@@ -56,6 +56,9 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
+    void dishNotOnTheMenuCannotBeAdded(){
+        
+    }
 
 
 
