@@ -28,10 +28,9 @@ public class Order {
     }
 
     public int total(){
-        int total = items.entrySet().stream()
+        return items.entrySet().stream()
                 .mapToInt(e -> menu.priceOf(e.getKey()) * e.getValue())
                 .sum();
-
-        return total;
+        
     }
 }
