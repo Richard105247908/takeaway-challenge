@@ -30,9 +30,9 @@ import static org.mockito.Mockito.when;
         assertEquals(2150,order.total());
     }
 
+    //change to parametirisesTest
     @Test
     void zeroQuantityIsRejected(){
-
         Order order=new Order(menu);
         String dish="Pizza";
         int quantity=0;
