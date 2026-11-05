@@ -9,6 +9,6 @@ public class Takeaway {
     }
 
     public void place(Order order, int expectedTotal) {
-        
+
     }
 }

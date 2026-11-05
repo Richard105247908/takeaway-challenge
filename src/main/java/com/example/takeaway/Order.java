@@ -10,8 +10,6 @@ public class Order {
 
     public Order(Menu menu){
         this.menu=menu;
-
-
     }
 
     public void add(String dish, int quantity){
@@ -22,15 +20,11 @@ public class Order {
             throw new IllegalArgumentException("The " +dish +" is not on the menu");
         }
         items.merge(dish,quantity,Integer::sum);
-        //items.put(dish,quantity);  using put replaces instead of add to dish.
-
-
     }
 
     public int total(){
         return items.entrySet().stream()
                 .mapToInt(e -> menu.priceOf(e.getKey()) * e.getValue())
                 .sum();
-
     }
 }
