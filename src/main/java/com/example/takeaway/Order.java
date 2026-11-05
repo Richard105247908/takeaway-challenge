@@ -16,6 +16,7 @@ public class Order {
 
     public void add(String dish, int quantity){
         items.merge(dish,quantity,Integer::sum);
+        //items.put(dish,quantity);  using put
 
 
     }

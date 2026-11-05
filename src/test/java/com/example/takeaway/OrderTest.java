@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
  class OrderTest {
 
     @Mock Menu menu;
-
+     //test 5
     @Test
     void totalIsTheSumOfDishPricesTimesQuantities(){
 
@@ -28,6 +28,8 @@ import static org.mockito.Mockito.when;
 
 
     }
+
+    @Test
 
 
 
