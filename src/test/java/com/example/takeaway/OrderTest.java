@@ -57,7 +57,7 @@ import static org.mockito.Mockito.when;
 
     @Test
     void dishNotOnTheMenuCannotBeAdded(){
-        
+        Order order=new Order(new Menu(Map.of("Pizza",850)));
     }
 
 
