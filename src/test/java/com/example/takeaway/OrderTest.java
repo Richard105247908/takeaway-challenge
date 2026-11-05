@@ -61,6 +61,8 @@ import static org.mockito.Mockito.when;
 
         var ex = assertThrows(IllegalArgumentException.class,
                 () -> order.add("Pizza of doom", 1));
+
+        assertEquals("The Pizza of doom is not on the menu", ex.getMessage());
     }
 
 
