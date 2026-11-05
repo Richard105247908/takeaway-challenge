@@ -22,8 +22,14 @@ public class Menu {
     public Map<String, Integer>  dishes(){
 
         return this.menuPrices;
-
     }
+
+    public Boolean has(String dish) {
+        return menuPrices.containsKey(dish);
+    }
+
+
+
 
 }
 

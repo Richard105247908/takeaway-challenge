@@ -32,4 +32,13 @@ class MenuTest {
 
         assertEquals(Map.of("Pizza", 850, "Cod", 450), menu.dishes());
     }
+
+    @Test
+    void menuHasDish(){
+        Menu menu = new Menu(Map.of("Pizza", 850));
+
+        assertEquals(false,menu.has("Rat"));
+
+
+    }
 }
