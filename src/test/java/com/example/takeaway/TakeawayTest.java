@@ -1,5 +1,6 @@
 package com.example.takeaway;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -20,13 +21,20 @@ public class TakeawayTest {
     Order order;
     @Mock
     SmsSender smsSender;
+    Takeaway takeaway;
+    Clock fixedClock;
+
+    @BeforeEach
+    void setUp(){
+        takeaway = new Takeaway(smsSender,fixedClock);
+        fixedClock = Clock.fixed(Instant.parse("2026-10-30T17:52:00Z"), ZoneId.of("UTC"));
+
+    }
 
     @Test
     void testPlaceOrderWithMismatchingTotalThrowsException() {
         when(order.total()).thenReturn(2150);
 
-        Clock fixedClock = Clock.fixed(Instant.parse("2026-10-30T17:52:00Z"), ZoneId.of("UTC"));
-        Takeaway takeaway = new Takeaway(smsSender, fixedClock);
 
         int expectedTotal = 1000;
 
@@ -38,4 +46,5 @@ public class TakeawayTest {
         verify(smsSender, never()).send(any());
 
     }
+
 }
