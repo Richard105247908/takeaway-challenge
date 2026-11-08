@@ -25,9 +25,9 @@ public class TakeawayTest {
     Clock fixedClock;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         fixedClock = Clock.fixed(Instant.parse("2026-10-30T17:52:00Z"), ZoneId.of("UTC"));
-        takeaway = new Takeaway(smsSender,fixedClock);
+        takeaway = new Takeaway(smsSender, fixedClock);
 
     }
 
@@ -44,35 +44,36 @@ public class TakeawayTest {
         assertEquals("Order total 2150 does not match the expected total 1000", ex.getMessage());
         verify(smsSender, never()).send(any());
     }
-    
+
     @Test
     void orderCalculatesDeliveryTimeBasedOnClock() {
 
-            when(order.total()).thenReturn(2150);
-            takeaway.place(order, 2150);
+        when(order.total()).thenReturn(2150);
+        takeaway.place(order, 2150);
 
-            verify(smsSender).send("Thank you! Your order was placed and will be delivered before 18:52");
-        }
+        verify(smsSender).send("Thank you! Your order was placed and will be delivered before 18:52");
+    }
 
-        @Test
-        void deliveryTimeIsOneHourAfterTheClockTime() {
-            Clock morning = Clock.fixed(Instant.parse("2026-10-30T09:15:00Z"), ZoneId.of("UTC"));
-            Takeaway morningTakeaway = new Takeaway(smsSender, morning);
-            when(order.total()).thenReturn(2150);
+    @Test
+    void deliveryTimeIsOneHourAfterTheClockTime() {
+        Clock morning = Clock.fixed(Instant.parse("2026-10-30T09:15:00Z"), ZoneId.of("UTC"));
+        Takeaway morningTakeaway = new Takeaway(smsSender, morning);
+        when(order.total()).thenReturn(2150);
 
-            morningTakeaway.place(order, 2150);
-            verify(smsSender).send("Thank you! Your order was placed and will be delivered before 10:15");
-        }
+        morningTakeaway.place(order, 2150);
+        verify(smsSender).send("Thank you! Your order was placed and will be delivered before 10:15");
+    }
 
-        @Test
-        void deliveryTimeWrapsAroundMidnight(){
-            Clock midnightClock = Clock.fixed(Instant.parse("2026-10-30T23:30:00Z"), ZoneId.of("UTC"));
-            takeaway = new Takeaway(smsSender, midnightClock);
-            when(order.total()).thenReturn(2150);
+    @Test
+    void deliveryTimeWrapsAroundMidnight() {
+        Clock midnightClock = Clock.fixed(Instant.parse("2026-10-30T23:30:00Z"), ZoneId.of("UTC"));
+        takeaway = new Takeaway(smsSender, midnightClock);
+        when(order.total()).thenReturn(2150);
 
-            takeaway.place(order, 2150);
+        takeaway.place(order, 2150);
 
-            verify(smsSender).send("Thank you! Your order was placed and will be delivered before 00:30");
-        }
+        verify(smsSender).send("Thank you! Your order was placed and will be delivered before 00:30");
+    }
+    
 }
 
