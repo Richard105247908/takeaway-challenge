@@ -1,6 +1,6 @@
 # Takeaway Challenge (Java)
 
-![CI](https://github.com/YOUR-USERNAME/takeaway-challenge/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Richard105247908/takeaway-challenge/actions/workflows/ci.yml/badge.svg)
 
 A Java 21 / JUnit 5 / Mockito port of the Makers [takeaway-challenge](https://github.com/makersacademy/takeaway-challenge), built test-first.
 
