@@ -41,8 +41,7 @@ public class TakeawayTest {
         var ex = assertThrows(IllegalArgumentException.class,
                 () -> takeaway.place(order, expectedTotal));
 
-        assertEquals("Order total " + order.total() + " does not match the expected total " + expectedTotal, ex.getMessage());
-
+        assertEquals("Order total 2150 does not match the expected total 1000", ex.getMessage());
         verify(smsSender, never()).send(any());
 
     }
@@ -60,16 +59,26 @@ public class TakeawayTest {
 
     //Test 10
     @Test
-    void testOrderWithCorrectTime(){
-        when(order.total()).thenReturn(2150);
-        takeaway.place(order,2150);
+    void orderCalculatesDeliveryTimeBasedOnClock() {
 
-        verify(smsSender).send("Thank you! Your order was placed and will be delivered before 18:52");
+            when(order.total()).thenReturn(2150);
+            takeaway.place(order, 2150);
+
+            verify(smsSender).send("Thank you! Your order was placed and will be delivered before 18:52");
+        }
+
+        @Test
+        void deliveryTimeIsOneHourAfterTheClockTime() {
+            Clock morning = Clock.fixed(Instant.parse("2026-10-30T09:15:00Z"), ZoneId.of("UTC"));
+            Takeaway morningTakeaway = new Takeaway(smsSender, morning);
+            when(order.total()).thenReturn(2150);
+
+            morningTakeaway.place(order, 2150);
+            verify(smsSender).send("Thank you! Your order was placed and will be delivered before 10:15");
 
 
 
-    }
 
+        }
+}
 
-
-    }
