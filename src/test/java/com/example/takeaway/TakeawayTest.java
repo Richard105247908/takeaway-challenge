@@ -74,6 +74,16 @@ public class TakeawayTest {
 
         verify(smsSender).send("Thank you! Your order was placed and will be delivered before 00:30");
     }
-    
+    @Test
+    void emptyOrderIsRejectedAndSendsNoText() {
+        when(order.isEmpty()).thenReturn(true);
+
+        var ex = assertThrows(IllegalArgumentException.class,
+                () -> takeaway.place(order, 0));
+
+        assertEquals("Cannot place an empty order", ex.getMessage());
+        verify(smsSender, never()).send(any());
+    }
+
 }
 

@@ -27,4 +27,8 @@ public class Order {
                 .mapToInt(e -> menu.priceOf(e.getKey()) * e.getValue())
                 .sum();
     }
+
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
 }

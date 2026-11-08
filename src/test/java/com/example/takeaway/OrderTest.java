@@ -7,8 +7,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -71,6 +70,22 @@ class OrderTest {
         assertEquals("The " + dish + " is not on the menu", ex.getMessage());
     }
 
+    @Test
+    void orderIsNotEmptyAfterAddingADish() {
+
+        Order order=new Order(menu);
+
+        when(menu.has("Pizza")).thenReturn(true);
+
+        order.add("Pizza",1);
+
+        assertFalse(order.isEmpty());
+    }
+
+    @Test
+    void newOrderIsEmpty() {
+        assertTrue(new Order(menu).isEmpty());
+    }
 
 }
 

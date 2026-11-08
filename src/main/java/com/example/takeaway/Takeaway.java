@@ -16,6 +16,10 @@ public class Takeaway {
     }
 
     public void place(Order order, int expectedTotal) {
+        if (order.isEmpty()){
+            throw new IllegalArgumentException("Cannot place an empty order");
+        }
+
         int orderTotal = order.total();
 
         if (orderTotal != expectedTotal) {
