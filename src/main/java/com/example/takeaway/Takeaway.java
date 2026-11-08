@@ -25,7 +25,7 @@ public class Takeaway {
         LocalTime deliveryTime = LocalTime.now(clock).plusHours(1);
         String formattedTime = deliveryTime.format(DateTimeFormatter.ofPattern("HH:mm"));
 
-        smsSender.send("Thank you! Your order was placed and will be delivered before 18:52");
+        smsSender.send("Thank you! Your order was placed and will be delivered before " + formattedTime);
 
     }
 }
