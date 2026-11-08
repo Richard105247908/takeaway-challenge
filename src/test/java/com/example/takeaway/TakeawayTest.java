@@ -48,5 +48,10 @@ public class TakeawayTest {
     }
 
     @Test
+    void orderWithCorrectTotalSendsOneText() {
+        
+    }
 
-}
+
+
+    }
