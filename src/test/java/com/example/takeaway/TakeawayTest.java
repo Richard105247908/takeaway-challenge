@@ -52,7 +52,9 @@ public class TakeawayTest {
         when(order.total()).thenReturn(2150);
 
         takeaway.place(order,2150);
-        
+
+        verify(smsSender).send(anyString());
+
     }
 
 
