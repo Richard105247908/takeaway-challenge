@@ -26,6 +26,7 @@ public class Takeaway {
         if (order.total() != expectedTotal) {
             throw new IllegalArgumentException("Order total " + order.total() + " does not match the expected total " + expectedTotal);
         }
+        smsSender.send("yes");
 
     }
 }
