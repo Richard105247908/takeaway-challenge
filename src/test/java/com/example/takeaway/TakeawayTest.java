@@ -51,6 +51,7 @@ public class TakeawayTest {
     void orderWithCorrectTotalSendsOneText() {
         when(order.total()).thenReturn(2150);
 
+        takeaway.place(order,2150);
         
     }
 
