@@ -49,6 +49,8 @@ public class TakeawayTest {
 
     @Test
     void orderWithCorrectTotalSendsOneText() {
+        when(order.total()).thenReturn(2150);
+
         
     }
 
