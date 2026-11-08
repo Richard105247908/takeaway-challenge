@@ -19,7 +19,7 @@ public class Takeaway {
         int orderTotal = order.total();
 
         if (orderTotal != expectedTotal) {
-            throw new IllegalArgumentException("Order total " + order.total() + " does not match the expected total " + expectedTotal);
+            throw new IllegalArgumentException("Order total " + orderTotal + " does not match the expected total " + expectedTotal);
         }
 
         LocalTime deliveryTime = LocalTime.now(clock).plusHours(1);

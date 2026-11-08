@@ -43,21 +43,8 @@ public class TakeawayTest {
 
         assertEquals("Order total 2150 does not match the expected total 1000", ex.getMessage());
         verify(smsSender, never()).send(any());
-
     }
-
-    //Test 9
-    @Test
-    void orderWithCorrectTotalSendsOneText() {
-        when(order.total()).thenReturn(2150);
-
-        takeaway.place(order,2150);
-
-        verify(smsSender).send(anyString());
-
-    }
-
-    //Test 10
+    
     @Test
     void orderCalculatesDeliveryTimeBasedOnClock() {
 
@@ -75,10 +62,17 @@ public class TakeawayTest {
 
             morningTakeaway.place(order, 2150);
             verify(smsSender).send("Thank you! Your order was placed and will be delivered before 10:15");
+        }
 
+        @Test
+        void deliveryTimeWrapsAroundMidnight(){
+            Clock midnightClock = Clock.fixed(Instant.parse("2026-10-30T23:30:00Z"), ZoneId.of("UTC"));
+            takeaway = new Takeaway(smsSender, midnightClock);
+            when(order.total()).thenReturn(2150);
 
+            takeaway.place(order, 2150);
 
-
+            verify(smsSender).send("Thank you! Your order was placed and will be delivered before 00:30");
         }
 }
 
