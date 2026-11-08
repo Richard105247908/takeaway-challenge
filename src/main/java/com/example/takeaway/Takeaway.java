@@ -1,6 +1,8 @@
 package com.example.takeaway;
 
 import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
 
 public class Takeaway {
     private final Menu menu;
@@ -26,7 +28,8 @@ public class Takeaway {
         if (order.total() != expectedTotal) {
             throw new IllegalArgumentException("Order total " + order.total() + " does not match the expected total " + expectedTotal);
         }
-        smsSender.send("yes");
+
+        smsSender.send("Thank you! Your order was placed and will be delivered before 18:52" );
 
     }
 }

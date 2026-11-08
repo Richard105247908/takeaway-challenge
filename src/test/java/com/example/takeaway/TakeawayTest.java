@@ -26,8 +26,8 @@ public class TakeawayTest {
 
     @BeforeEach
     void setUp(){
-        takeaway = new Takeaway(smsSender,fixedClock);
         fixedClock = Clock.fixed(Instant.parse("2026-10-30T17:52:00Z"), ZoneId.of("UTC"));
+        takeaway = new Takeaway(smsSender,fixedClock);
 
     }
 
@@ -47,6 +47,7 @@ public class TakeawayTest {
 
     }
 
+    //Test 9
     @Test
     void orderWithCorrectTotalSendsOneText() {
         when(order.total()).thenReturn(2150);
@@ -54,6 +55,18 @@ public class TakeawayTest {
         takeaway.place(order,2150);
 
         verify(smsSender).send(anyString());
+
+    }
+
+    //Test 10
+    @Test
+    void testOrderWithCorrectTime(){
+        when(order.total()).thenReturn(2150);
+        takeaway.place(order,2150);
+
+        verify(smsSender).send("Thank you! Your order was placed and will be delivered before 18:52");
+
+
 
     }
 
